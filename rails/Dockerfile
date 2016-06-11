@@ -1,8 +1,5 @@
 FROM turfmedia/ruby
 
-# throw errors if Gemfile has been modified since Gemfile.lock
-RUN bundle config --global frozen 1
-
 ENV POSTGRESQL_VERSION 9.4
 
 RUN mkdir -p /app
@@ -15,6 +12,7 @@ RUN curl --silent http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc | apt-key
 RUN packages=" \
     nodejs \
     postgresql-client-$POSTGRESQL_VERSION \
+    libpq-dev libxml2-dev libxslt-dev \
 	" \
   && curl -sL https://deb.nodesource.com/setup_6.x -o nodesource_setup.sh && bash nodesource_setup.sh \
   && apt-get update && apt-get install -y --no-install-recommends $packages \

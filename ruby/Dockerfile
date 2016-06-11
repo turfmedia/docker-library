@@ -3,20 +3,6 @@ MAINTAINER Stéphane Busso <stephane.busso@gmail.com>
 
 ENV DEBIAN_FRONTEND noninteractive
 
-# RUN \
-#   sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list && \
-#   apt-get update && \
-#   apt-get install -q -y debconf locales curl
-
-# RUN dpkg-reconfigure locales && \
-#     locale-gen en_US.UTF-8 && \
-#     /usr/sbin/update-locale LANG=en_US.UTF-8
-
-# ENV LANG en_US.UTF-8
-# ENV LANGUAGE en_US.UTF-8
-# ENV LC_ALL en_US.UTF-8
-# ENV HOME /root
-
 # skip installing gem documentation
 RUN mkdir -p /usr/local/etc \
 	&& { \
